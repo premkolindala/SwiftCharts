@@ -1,0 +1,26 @@
+import SwiftUI
+import Charts
+
+struct LineChartView: View {
+    let data = [
+        ("Jan", 100),
+        ("Feb", 120),
+        ("Mar", 150),
+        ("Apr", 130),
+        ("May", 170)
+    ]
+    
+    var body: some View {
+        Chart {
+            ForEach(data, id: \.0) { (month, value) in
+                LineMark(
+                    x: .value("Month", month),
+                    y: .value("Value", value)
+                )
+            }
+        }
+        .chartStyle(.line)
+        .padding()
+        .navigationTitle("Line Chart Example")
+    }
+}
